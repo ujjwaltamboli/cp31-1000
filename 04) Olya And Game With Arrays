@@ -1,0 +1,35 @@
+#include <bits/stdc++.h>
+using namespace std;
+int main(){
+    int t;
+    cin>>t;
+    while (t--){
+        int n;
+        cin>>n;
+        vector<vector<long long>> store;
+        while (n--){
+            int mi;
+            cin>>mi;
+            vector<long long> s(mi,0);
+            for (int i=0;i<mi;i++){
+                cin>>s[i];
+            }
+            sort(s.begin(),s.end());
+            store.push_back(s);
+        }
+        long long sum=0;
+        long long mini1=INT_MAX;
+        long long mini0=INT_MAX;
+        for (auto arr:store){
+            sum=sum+arr[1];
+            mini1=min(mini1,arr[1]);
+            mini0=min(mini0,arr[0]);
+        }
+        cout<<sum-mini1+mini0<<endl;
+    }
+
+    //T.C.:- O(nlogn);
+    //S.C.:- O(mi);
+
+    return 0;
+}
