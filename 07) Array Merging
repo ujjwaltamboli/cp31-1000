@@ -1,0 +1,57 @@
+#include <bits/stdc++.h>
+using namespace std;
+int main(){
+    int t;
+    cin>>t;
+    while (t--){
+        int n;
+        cin>>n;
+        vector<int> a1(n,0);
+        vector<int> a2(n,0);
+        for (int i=0;i<n;i++){
+            cin>>a1[i];
+        }
+        for (int i=0;i<n;i++){
+            cin>>a2[i];
+        }
+        int i=0;
+        int curr=a1[0];
+        unordered_map<int,int> freq1;
+        int count=0;
+        while (i<n){
+            while (i<n && a1[i]==curr){
+                count++;
+                i++;
+            }
+            if (i>=n)break;
+            freq1[curr]=max(freq1[curr],count);
+            curr=a1[i];
+            count=0;
+        }
+        freq1[curr]=max(freq1[curr],count);
+        i=0;
+        curr=a2[0];
+        unordered_map<int,int> freq2;
+        count=0;
+        while (i<n){
+            while (i<n && a2[i]==curr){
+                count++;
+                i++;
+            }
+            if (i>=n)break;
+            freq2[curr]=max(freq2[curr],count);
+            curr=a2[i];
+            count=0;
+        }
+        freq2[curr]=max(freq2[curr],count);
+        int maxi=0;
+        for (int i=1;i<=2*n;i++){
+            maxi=max(maxi,freq1[i]+freq2[i]);
+        }
+        cout<<maxi<<endl;
+
+        //T.C.:- O(n);
+        //S.C.:- O(2*n);
+    }
+    return 0;
+}
