@@ -1,0 +1,39 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+long long sumFromCounttoK(int count, int k){
+    if (count<k){
+        return 0;
+    }
+    return 1ll*(count-k+1)*(count-k+2)/(long long)2;
+}
+
+int main(){
+    int t;
+    cin>>t;
+    while (t--){
+        int n,k,q;
+        cin>>n>>k>>q;
+        vector<int> store(n,0);
+        for (int i=0;i<n;i++){
+            cin>>store[i];
+        }
+        int count=0;
+        long long sum=0;
+        for (int i=0;i<n;i++){
+            if (store[i]<=q){
+                count++;
+            }
+            else{
+                sum=sum+sumFromCounttoK(count,k);
+                count=0;
+            }
+        }
+        sum=sum+sumFromCounttoK(count,k);
+        cout<<sum<<endl;
+    }
+
+    //T.C.:- O(n);
+    //S.C.:- O(n);
+    return 0;
+}
