@@ -1,0 +1,37 @@
+#include <bits/stdc++.h>
+using namespace std;
+int main(){
+    int t;
+    cin>>t;
+    while (t--){
+        int n,p;
+        cin>>n>>p;
+        vector<vector<int>> store(n,vector<int>(2,0));
+        for (int i=0;i<n;i++){//O(n)
+            cin>>store[i][1];
+        }
+        for (int i=0;i<n;i++){//O(n)
+            cin>>store[i][0];
+        }
+        sort(store.begin(),store.end(),[](vector<int> &a, vector<int> &b){
+            return a[0]<b[0];
+        });
+        // O(nlogn)
+        long long cost=p;
+        int remaining=n-1;
+        int i=0;
+        while (remaining>0){//O(n)
+            int ai=store[i][1];
+            int bi=store[i][0];
+            long long temp=1LL*min(remaining,ai)*min(bi,p);
+            cost=cost+temp;
+            remaining=remaining-min(remaining,ai);
+            i++;
+        }
+        cout<<cost<<endl;
+
+        //T.C.:- O(nlogn);
+        //S.C.:- O(n*2);
+    }
+    return 0;
+}
