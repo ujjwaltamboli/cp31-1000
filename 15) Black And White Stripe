@@ -1,0 +1,40 @@
+#include <bits/stdc++.h>
+using namespace std;
+int main(){
+    int t;
+    cin>>t;
+    while (t--){
+        int n,k;
+        cin>>n>>k;
+        string s;
+        cin>>s;
+        int count=0;
+        int i=0;
+        int j=0;
+        int mini=INT_MAX;
+        for (;j<k;j++){
+            if (s[j]=='W'){
+                count++;
+            }
+        }
+        mini=min(mini, count);
+        j--;
+        while (j<n){
+            j++;
+            if (j>=n) break;
+            if (s[j]=='W'){
+                count++;
+            }
+            if (s[i]=='W'){
+                count--;
+            }
+            i++;
+            mini=min(mini, count);
+        }
+        cout<<mini<<endl;
+
+        //T.C.:- O(n);
+        //S.C.:- O(n);
+    }
+    return 0;
+}
