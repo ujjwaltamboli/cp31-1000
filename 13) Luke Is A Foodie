@@ -1,0 +1,35 @@
+#include <bits/stdc++.h>
+using namespace std;
+int main(){
+    int t;
+    cin>>t;
+    while (t--){
+        int n,x;
+        cin>>n>>x;
+        vector<int> store(n,0);
+        for (int i=0;i<n;i++){
+            cin>>store[i];
+        }
+        int mini=store[0];
+        int maxi=store[0];
+        int count=0;
+        for (int i=1;i<n;i++){
+            if (store[i]>maxi){
+                maxi=store[i];
+            }
+            if (store[i]<mini){
+                mini=store[i];
+            }
+            if ((maxi-mini)>2*x){
+                mini=store[i];
+                maxi=store[i];
+                count++;
+            }
+
+            //T.C.:- O(n)
+            //S.C.:- O(n)
+        }
+        cout<<count<<endl;
+    }
+    return 0;
+}
