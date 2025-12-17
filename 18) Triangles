@@ -1,0 +1,54 @@
+#include <bits/stdc++.h>
+using namespace std;
+int main()
+{
+    long long t;
+    cin >> t;
+    while (t--)
+    {
+
+        long long w, h;
+        cin >> w >> h;
+        long long maxix = 0;
+        for (long long i = 0; i < 2; i++)
+        {
+            long long k;
+            cin >> k;
+            long long a;
+            long long mini = INT_MAX;
+            long long maxi = 0;
+            for (long long i = 0; i < k; i++)
+            {
+                cin >> a;
+                mini = min(mini, a);
+                maxi = max(maxi, a);
+            }
+            maxix = max(maxix, maxi - mini);
+        }
+        maxix = maxix * h;
+
+        long long maxiy = 0;
+        for (long long i = 0; i < 2; i++)
+        {
+            long long k;
+            cin >> k;
+            long long a;
+            long long mini = INT_MAX;
+            long long maxi = 0;
+            for (long long i = 0; i < k; i++)
+            {
+                cin >> a;
+                mini = min(mini, a);
+                maxi = max(maxi, a);
+            }
+            maxiy = max(maxiy, maxi - mini);
+        }
+        maxiy = maxiy * w;
+
+        cout << max(maxix, maxiy) << endl;
+
+        //Time Complexity:- O(n)
+        //Space Complexity:- O(1)
+    }
+    return 0;
+}
