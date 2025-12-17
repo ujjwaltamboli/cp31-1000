@@ -1,0 +1,35 @@
+#include <bits/stdc++.h>
+using namespace std;
+int main(){
+    int t;
+    cin>>t;
+    while (t--){
+        long long n,k,b,s;
+        cin>>n>>k>>b>>s;
+        vector<long long> ans;
+        if (b>s/k){
+            cout<<-1<<endl;
+            continue;
+        }
+        while (n>=ans.size()+1 && s/k!=b){ //O(n);
+            s=s-(k-1);
+            ans.push_back(k-1);
+        }
+        ans.push_back(s);
+
+        if (n<ans.size())cout<<-1<<endl;
+        else{
+            while (ans.size()<n){//O(n)
+                ans.push_back(0);
+            }
+            for (auto i:ans){//O(n)
+                cout<<i<<" ";
+            }
+            cout<<endl;
+        }
+
+        //T.C.:- O(n);
+        //S.C.:- O(n);
+    }
+    return 0;
+}
