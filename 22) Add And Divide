@@ -1,0 +1,35 @@
+#include <bits/stdc++.h>
+using namespace std;
+int main(){
+    int t;
+    cin>>t;
+    while (t--){
+        int a;
+        cin>>a;
+        int b;
+        cin>>b;
+        b=b-1;
+        int mini=INT_MAX;
+        int n=33;
+        int op1=-1;
+        int a_copy=a;
+        while (n--){
+            b++;
+            op1++;
+            int op2=0;
+            
+            a=a_copy;
+            while (a!=0 && b!=1){
+                a=a/b;
+                op2++;
+            }
+            if (b==1) op2=1e7;
+            mini=min(mini, op1+op2);
+        }
+        cout<<mini<<endl;
+
+        //T.C.:- O(1024)
+        //S.C.:- O(1)
+    }
+    return 0;
+}
