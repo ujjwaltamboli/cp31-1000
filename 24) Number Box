@@ -1,0 +1,34 @@
+#include <bits/stdc++.h>
+using namespace std;
+int main(){
+    int t;
+    cin>>t;
+    while (t--){
+        int n,m;
+        cin>>n>>m;
+        vector<vector<int>> store(n, vector<int>(m,0));
+        int mini=INT_MAX;
+        int count=0;
+        int sum=0;
+        for (int i=0;i<n;i++){
+            for (int j=0;j<m;j++){
+                cin>>store[i][j];
+                if (store[i][j]<0){
+                    count++;
+                }
+                if (abs(store[i][j])<mini){
+                    mini=abs(store[i][j]);
+                }
+                sum=sum+abs(store[i][j]);
+            }
+        }
+        if (count%2==0){
+            cout<<sum<<endl;
+        }
+        else{
+            cout<<sum-2*mini<<endl;
+        }
+    }
+    //T.C.:- O(n*m);
+    //S.C:- O(n*m);
+}
