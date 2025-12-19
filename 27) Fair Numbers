@@ -1,0 +1,25 @@
+#include <bits/stdc++.h>
+using namespace std;
+int main(){
+    long long t;
+    cin>>t;
+    while (t--){
+        long long n;
+        cin>>n;
+        long long copy_n=n;
+        bool flag=true;
+
+        while (n/10!=0){
+            long long digit=n%10;
+            n=n/10;
+            if (digit!=0 && copy_n%digit!=0){
+                n=copy_n+1;
+                copy_n=n;
+            }
+        }
+        cout<<copy_n<<endl;
+    }
+    //T.C.:- O(50000)
+    //S.C.:- O(1)
+    return 0;
+}
