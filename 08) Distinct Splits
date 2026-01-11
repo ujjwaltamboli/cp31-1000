@@ -1,0 +1,35 @@
+#include <bits/stdc++.h>
+using namespace std;
+int main(){
+    int t;
+    cin>>t;
+    while (t--){
+        int n;
+        cin>>n;
+        string s;
+        cin>>s;
+        unordered_map<int,int> freq1;
+        unordered_map<int,int> freq2;
+        for (int i=0;i<n;i++){
+            freq2[s[i]]++;
+        }
+        int maxi=0;
+
+        int right=freq2.size();
+        for (int i=0;i<n-1;i++){
+            freq1[s[i]]++;
+            freq2[s[i]]--;
+            if (freq2[s[i]]==0){
+                right--;
+            }
+            int left=freq1.size();
+            maxi=max(maxi,left+right);
+        }
+        cout<<maxi<<endl;
+
+        
+    }
+    //T.C.:- O(n);
+    //S.C.:- O(n);
+    return 0;
+}
