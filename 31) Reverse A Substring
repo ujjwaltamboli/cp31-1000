@@ -1,0 +1,30 @@
+#include <bits/stdc++.h>
+using namespace std;
+int main(){
+    int n;
+    cin>>n;
+    string store;
+    cin>>store;
+    bool flag=false;
+    int l;
+    int r;
+    for (int i=0;i<n-1;i++){
+        if (store[i+1]<store[i]){
+            l=i;
+            r=i+1;
+            flag=true;
+            break;
+        }
+    }
+    if (!flag){
+        cout<<"No"<<endl;
+    }
+    else{
+        cout<<"yes"<<endl;
+        cout<<l+1<<" "<<r+1<<endl;
+    }
+
+    //T.C.:- O(n);
+    //S.C.:- O(n);
+    return 0;
+}
